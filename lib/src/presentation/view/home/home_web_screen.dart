@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/src/presentation/components/base_layout.dart';
+import 'package:portfolio/src/presentation/riverpods/opacity_anim_controller.dart';
 
 import 'widgets/side_button.dart';
 
@@ -59,10 +61,20 @@ class HomeWebScreen extends StatelessWidget {
                 SizedBox(
                   height: _size.height,
                   width: _size.width * 0.28,
-                  child: Image.asset(
-                    'assets/images/profile-img.png',
-                    fit: BoxFit.contain,
-                  ),
+                  child: Consumer(builder: (context, ref, child) {
+                    ref.watch(opacityAnimProvider);
+                    ref.watch(opacityAnimProvider.notifier).animToggel();
+                    return AnimatedOpacity(
+                      duration: const Duration(seconds: 1),
+                      opacity: ref.watch(opacityAnimProvider.notifier).isAnim
+                          ? 1
+                          : 0,
+                      child: Image.asset(
+                        'assets/images/profile-img.png',
+                        fit: BoxFit.contain,
+                      ),
+                    );
+                  }),
                 ),
                 SideButton(
                   onTap: () {

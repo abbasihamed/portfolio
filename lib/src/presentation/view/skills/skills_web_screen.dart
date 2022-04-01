@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/base_layout.dart';
+import '../../riverpods/hover_controller.dart';
 import 'widgets/box_row.dart';
 
 class SkillsWebScreen extends StatelessWidget {
@@ -65,7 +67,6 @@ class SkillsWebScreen extends StatelessWidget {
           ),
           Expanded(
             child: SizedBox(
-              // color: Colors.amber,
               height: _size.height,
               child: Stack(
                 children: [
@@ -84,28 +85,38 @@ class SkillsWebScreen extends StatelessWidget {
                   Positioned(
                     right: 10,
                     top: 130,
-                    child: Container(
-                      height: 500,
-                      width: 600,
-                      padding:
-                          const EdgeInsets.only(left: 12, top: 20, right: 12),
-                      decoration: BoxDecoration(
-                        color: Colors.black87,
-                        border: Border.all(color: Colors.white, width: 3),
-                      ),
-                      child: Column(
-                        children: const [
-                          SkillsRow(
-                              iconPath: 'assets/icons/double-tick.png',
-                              title: 'Dart'),
-                          SkillsRow(
-                              iconPath: 'assets/icons/double-tick.png',
-                              title: 'Flutter'),
-                          SkillsRow(
-                              iconPath: 'assets/icons/double-tick.png',
-                              title: 'Git'),
-                        ],
-                      ),
+                    child: Consumer(
+                      builder: (context, ref, child) {
+                        ref.watch(hoverProvider);
+                        return InkWell(
+                          onHover: (value) {
+                            ref.read(hoverProvider.notifier).hoverToggle(value);
+                          },
+                          onTap: () {},
+                          child: Container(
+                            height: 500,
+                            width: 600,
+                            padding: const EdgeInsets.only(
+                                left: 12, top: 20, right: 12),
+                            decoration: BoxDecoration(
+                              color: ref.read(hoverProvider.notifier).isHover
+                                  ? Colors.white
+                                  : Colors.black87,
+                              border: Border.all(color: Colors.white, width: 3),
+                            ),
+                            child: Column(
+                              children: const [
+                                SkillsRow(
+                                    iconPath: 'assets/icons/double-tick.png',
+                                    title: 'Python'),
+                                SkillsRow(
+                                    iconPath: 'assets/icons/double-tick.png',
+                                    title: 'Java Script'),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],
