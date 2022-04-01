@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/src/config/routes/app_route.dart';
-import 'package:portfolio/src/presentation/view/about/about_page.dart';
-import 'package:portfolio/src/presentation/view/home/home_page.dart';
-import 'package:portfolio/src/presentation/view/skills/skills_page.dart';
 
 void main() {
   runApp(const MyApp());
