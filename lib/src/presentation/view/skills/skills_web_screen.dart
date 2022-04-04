@@ -85,38 +85,29 @@ class SkillsWebScreen extends StatelessWidget {
                   Positioned(
                     right: 10,
                     top: 130,
-                    child: Consumer(
-                      builder: (context, ref, child) {
-                        ref.watch(hoverProvider);
-                        return InkWell(
-                          onHover: (value) {
-                            ref.read(hoverProvider.notifier).hoverToggle(value);
-                          },
-                          onTap: () {},
-                          child: Container(
-                            height: 500,
-                            width: 600,
-                            padding: const EdgeInsets.only(
-                                left: 12, top: 20, right: 12),
-                            decoration: BoxDecoration(
-                              color: ref.read(hoverProvider.notifier).isHover
-                                  ? Colors.white
-                                  : Colors.black87,
-                              border: Border.all(color: Colors.white, width: 3),
-                            ),
-                            child: Column(
-                              children: const [
-                                SkillsRow(
-                                    iconPath: 'assets/icons/double-tick.png',
-                                    title: 'Python'),
-                                SkillsRow(
-                                    iconPath: 'assets/icons/double-tick.png',
-                                    title: 'Java Script'),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
+                    child: InkWell(
+                      onHover: (value) {},
+                      onTap: () {},
+                      child: Container(
+                        height: 500,
+                        width: 600,
+                        padding:
+                            const EdgeInsets.only(left: 12, top: 20, right: 12),
+                        decoration: BoxDecoration(
+                          color: Colors.black87,
+                          border: Border.all(color: Colors.white, width: 3),
+                        ),
+                        child: Column(
+                          children: const [
+                            SkillsRow(
+                                iconPath: 'assets/icons/double-tick.png',
+                                title: 'Python'),
+                            SkillsRow(
+                                iconPath: 'assets/icons/double-tick.png',
+                                title: 'Java Script'),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],
