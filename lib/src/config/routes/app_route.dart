@@ -2,11 +2,17 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/widgets.dart';
 import 'package:portfolio/src/presentation/view/home/home_page.dart';
 import 'package:portfolio/src/presentation/view/skills/skills_page.dart';
+import 'package:portfolio/src/presentation/view/splash/spalsh_page.dart';
 
 import '../../presentation/view/about/about_page.dart';
 
 class FluroRoute {
   static final router = FluroRouter();
+
+  static Handler splashPage = Handler(
+      handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
+    return const SplashPage();
+  });
 
   static Handler homePage = Handler(
       handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
@@ -24,7 +30,8 @@ class FluroRoute {
   });
 
   static void defineRoter() {
-    router.define('/', handler: homePage);
+    router.define('/', handler: splashPage);
+    router.define('/home', handler: homePage);
     router.define('/about',
         handler: aboutPage, transitionType: TransitionType.inFromLeft);
     router.define('/skills',
