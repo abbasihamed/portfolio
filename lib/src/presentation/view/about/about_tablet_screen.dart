@@ -40,7 +40,12 @@ class AboutTabletScreen extends StatelessWidget {
                   border: Border.all(color: Colors.white, width: 3),
                 ),
                 child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                  """
+I am a junior mobile programmer living in Tabriz.
+I have a great interest in learning and teaching, and I even took steps to teach.
+I have work experience in an advertising project in which I got acquainted with Docker and ci / cd.
+Another work experience that I am still working on is related to banking and banking process programming. In this company, I gained a very good team work experience and gained enough familiarity with Jira.
+""",
                   style: GoogleFonts.vesperLibre(
                     color: Colors.white,
                     fontWeight: FontWeight.w400,

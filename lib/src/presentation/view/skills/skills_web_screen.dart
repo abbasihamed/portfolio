@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../components/base_layout.dart';
-import '../../riverpods/hover_controller.dart';
 import 'widgets/box_row.dart';
 
 class SkillsWebScreen extends StatelessWidget {
