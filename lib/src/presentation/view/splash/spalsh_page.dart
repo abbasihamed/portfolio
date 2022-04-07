@@ -10,6 +10,8 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MyResponsive(
       desktop: SplashWebScreen(),
+      tablet: SplashWebScreen(),
+      mobile: SplashWebScreen(),
     );
   }
 }
